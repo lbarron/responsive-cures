@@ -1,0 +1,29 @@
+.example {
+  padding-bottom: 30px;
+}
+
+.example-double-column {
+  display: flex;
+  flex: 1;
+}
+
+.scale-iframe { margin-bottom: 30px; }
+
+.scale-iframe--intrinsic-ratio {
+  position: relative;
+  height: 0;
+
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.scale-iframe--transform-scale {
+  overflow: hidden;
+
+  iframe { transform-origin: 0 0; }
+}
