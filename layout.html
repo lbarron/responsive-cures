@@ -36,7 +36,7 @@
 
         <h3 name="example-equal-width-columns">Equal width columns</h3>
 
-        <p>How to create two columns that will fill the viewport and maintain an equal width, regardless of content.</p>
+        <p>creating two columns that will fill the container and always maintain an equal width and height, regardless of the content they hold.</p>
 
         <div class="example example-double-column">
             <div style="width: 100%; padding: 20px; background-color: #D9DAD9">
@@ -47,6 +47,43 @@
                 <p>This column has hardly any content.</p>
             </div>
         </div>
+
+        <h3 name="example-equal-width-columns">Vertical alignment</h3>
+
+        <p>While not exclusive to responsive design, vertical alignment is certainly worth a mention. Since the birth of CSS, vertical alignment has been a thorn in the side of the UI developer because there was never a simple solution, and vertical-alignment just never seemed to live up to its name, at least not without headaches.</p>
+
+        <p>Flexbox finally introduces vertical alignment, and it does exactly what it says on the box!</p>
+
+        <div class="example example-vertical-alignment">
+            <span>I'm vertically aligned!</span>
+        </div>
+
+        <h3 name="example-border-box">Border box</h3>
+
+        <p>Arguably the best yet most subtle feature introduced by CSS3 was the border-box property. It was such a godsend for front-end developers that CSS Tricks decided to observe <a href="https://css-tricks.com/international-box-sizing-awareness-day/" title="International Box-Sizing Awareness Day">International Box-Sizing Awareness Day</a> in February.</p>
+
+        <p>This adored property makes styling responsive layouts many times easier to accomplish by simply specfying that an elements padding and border should be calculated as a part of the total width and height.</p>
+
+        <div class="example example-border-box">My border, padding, width and height are calculated as one so I don't overflow and cause nasty scrollbars!</div>
+
+        <h3 name="example-growing-blocks">Growing blocks</h3>
+
+        <p>Flexbox also allows us to grow elements using the flex-grow property. In this scenario we have three blocks, each of them are set to "flex-grow: 1". This causes all three blocks to fill the width of the container, taking an equal share of available space.</p>
+
+        <div class="example example-unequal-blocks">
+            <div style="flex-grow: 1">First</div>
+            <div style="flex-grow: 1">Second</div>
+            <div style="flex-grow: 1">Third</div>
+        </div>
+
+        <p>By setting the center block to "flex-grow: 2", this causes the center block to take up 50% of space, while the first and last blocks share the remaining space.</p>
+
+        <div class="example example-unequal-blocks">
+            <div style="flex-grow: 1">First</div>
+            <div style="flex-grow: 2">Second</div>
+            <div style="flex-grow: 1">Third</div>
+        </div>
+
     </div>
 </div>
 
