@@ -84,90 +84,69 @@
             <div style="flex-grow: 1">Third</div>
         </div>
 
+        <h3 name="tables">Tables</h3>
+
+        <p>While the days of using tables to layout a website are thankfully a thing of the past, we do still of course find ourselves using tables for their intended purpose; creating tabular data, but how do we deal with large tables on a smaller screen?</p>
+
+        <p>Developers have used various different techniques for tackling responsive tables, from turning the table into a <a href="http://jsbin.com/apane6/14/">mini graphic</a>, to converting tables into conveniently sized graphs using JavaScript, but one of the more simple and practical solutions I have found is one by <a href="https://css-tricks.com/responsive-data-tables/">Chris Coyier</a>, to simply reformat tables on smaller screens, although it does require injecting the header content via CSS which may or may not be a problem.</p>
+
+        <div class="responsive-table">
+            <table>
+                <thead>
+                <tr>
+                    <th>City name</th>
+                    <th>Population</th>
+                    <th>Country</th>
+                    <th>Mayor</th>
+                    <th>Demonym</th>
+                    <th>Interesting fact</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Wellington</td>
+                    <td>405,000</td>
+                    <td>New Zealand</td>
+                    <td>Justin Lester</td>
+                    <td>Wellingtonian</td>
+                    <td>Wellington is the world's southernmost capital of a sovereign state.</td>
+                </tr>
+                <tr>
+                  <td>Perth</td>
+                  <td>2,066,564</td>
+                  <td>Australia</td>
+                  <td>Lisa Scaffidi</td>
+                  <td>Perthites</td>
+                  <td>Perth is closer to Singapore than it is to Sydney.</td>
+                </tr>
+                <tr>
+                  <td>Prince Rupert</td>
+                    <td>12,508</td>
+                  <td>Canada</td>
+                  <td>Lee Brain</td>
+                  <td>Nobody knows</td>
+                  <td>Students paid their way through school by working in the fishing industry.</td>
+                </tr>
+                <tr>
+                  <td>Osaka</td>
+                    <td>19,341,976 (metro)</td>
+                  <td>Japan</td>
+                  <td>Toru Hashimoto</td>
+                  <td>Osakian</td>
+                  <td>Osaka is the second largest city in Japan by daytime population.</td>
+                </tr>
+                <tr>
+                  <td>Trondheim</td>
+                    <td>274,958</td>
+                  <td>Norway</td>
+                  <td>Rita Ottervik</td>
+                  <td>Trondhjemmer</td>
+                  <td>Served as the capital of Norway during the Viking Age until 1217.</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
-
-<script>
-var scaleIframes = function() {
-    // SCALING OF IFRAMES
-    // A list of sources we know are compatible with intrinsic ratio scaling.
-    // Intrinsic ratios allow us to make an iframe responsive, but it will only
-    // work correctly if the contents of the iframe are responsive too.
-    // See: http://alistapart.com/article/creating-intrinsic-ratios-for-video
-    const scalableSources = [
-        'youtube.com',
-        'youtube-nocookie.com',
-        'google.co.nz/maps/',
-        'google.com/maps/'
-    ];
-
-    // We want to look for keyords in our iframe sources rather than entire
-    // paths, like "youtube.com" for example, so we use regex
-    const scalableRegex = new RegExp(`^.*(${scalableSources.join('|')}).*$`)
-
-    // Get all iframe containers we want to scale on this page
-    let iframeContainers = document.getElementsByClassName('scale-iframe');
-
-    // Loop through the iframe containers
-    for (var i = 0; i < iframeContainers.length; i++) {
-        // Get next iframe container in array
-        let iframeContainer = iframeContainers[i];
-
-        // Get width and height of current iframe container
-        let iframeContainerWidth = iframeContainer.clientWidth;
-        let iframeContainerHeight = iframeContainer.clientHeight;
-
-        // Get the iframes inside this iframe container and store in array
-        let iframes = iframeContainer.getElementsByTagName('iframe');
-
-        // We only expect to find one iframe inside our iframe container
-        // so we select first iframe from the array
-        let iframe = iframes[0];
-
-        // Get width and height of current iframe
-        let iframeWidth = iframe.clientWidth;
-        let iframeHeight = iframe.clientHeight;
-
-        if (scalableRegex.test(iframe.src)) {
-            // If this iframe matches one of our recognised scalable sources
-            // Divide height by width to calculate its aspect ratio
-            let aspectRatio = iframeHeight / iframeWidth;
-
-            // Calculate current aspect ratio of HTML asset to apply padding %
-            iframeContainer.style.paddingBottom = (aspectRatio * 100) + '%';
-
-            // Add intrinsic scaling class
-            iframeContainer.classList.add(iframeContainer.classList+'--intrinsic-ratio');
-        } else {
-            // If iframe is not recgonised as intrinsically scalable, we will
-            // physically scale as if it were an image, using transform scale.
-
-            // For the targeted width you could use any element width or an
-            // actual number. In this case we are using the iframe container
-            // because we know this element always fills the content wrapper.
-            var targetedWidth = iframeContainer.clientWidth;
-            var targetedHeight;
-
-            // Calculate the scale factor
-            var scaleFactor = (targetedWidth / iframeWidth);
-
-            // Add new transform scale property
-            iframe.style.transform = 'scale(' + scaleFactor + ')',
-
-            // When we scale an element it will change pixel ratio but not the
-            // actual pixel size, as a result we end up with excess white space.
-            // We need to resize the container to fix this problem
-            targetedHeight = iframeHeight / iframeWidth * targetedWidth;
-            iframeContainer.style.height = targetedHeight+'px';
-
-            // Add transform scale class for generic styling
-            iframeContainer.classList.add(iframeContainer.classList+'--transform-scale');
-        }
-    }
-}
-
-window.onload = scaleIframes;
-</script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </body>
 </html>

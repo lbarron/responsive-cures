@@ -34,7 +34,7 @@
     <div class="contents">
         <h2>Scaling</h2>
 
-		<h3 name="example-scale-intrinsic-ratios">Iframes scaling using intrinsic ratios</h3>
+				<h3 name="example-scale-intrinsic-ratios">Iframes scaling using intrinsic ratios</h3>
 
         <p>Some examples of iframes we can scale using an intrinsic ratio:</p>
 
@@ -45,7 +45,7 @@
 
         <p>YouTube video, size 420x315 (4:3 aspect ratio):</p>
         <div class="scale-iframe">
-            <iframe width="420" height="315" src="https://www.youtube.com/embed/H-oH-TELcLE" √ allowfullscreen></iframe>
+            <iframe width="420" height="315" src="https://www.youtube.com/embed/H-oH-TELcLE" allowfullscreen></iframe>
         </div>
 
         <h3 name="example-scale-transform">Iframes scaling using CSS3 transform</h3>
@@ -83,10 +83,6 @@ var scaleIframes = function() {
     for (var i = 0; i < iframeContainers.length; i++) {
         // Get next iframe container in array
         let iframeContainer = iframeContainers[i];
-
-        // Get width and height of current iframe container
-        let iframeContainerWidth = iframeContainer.clientWidth;
-        let iframeContainerHeight = iframeContainer.clientHeight;
 
         // Get the iframes inside this iframe container and store in array
         let iframes = iframeContainer.getElementsByTagName('iframe');
