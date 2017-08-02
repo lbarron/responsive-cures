@@ -34,7 +34,24 @@
     <div class="contents">
         <h2>Scaling</h2>
 
-				<h3 name="example-scale-intrinsic-ratios">Iframes scaling using intrinsic ratios</h3>
+        <h3 name="example-scale-intrinsic-ratios">Images</h3>
+
+        <p>Add the styles; width: 100% and height: auto to an image tag and you have yourself a responsive image, but does this provide the best experience for the user?</p>
+
+        <p>Delivering a super high resolution image to a mobile user, to then scale it down for a small screen is not only an almost criminal waste of resources, but it's not going to provide the best experience for a user on a slower network connection</p>
+
+        <p>The solution is the HTML5 picture tag, which allows us to serve different versions of the same image depending on the users current viewport.</p>
+
+        <p>The example below is a photo of New Zealand's beautiful Kapiti Coast, taken from the mountainous Kapiti island, but what we're doing here is serving an option of three different versions of this image, a small, medium or rich version. You can test this by simply resizing your window and watching as the image transitions to different versions. Your browser is downloading the image it deems most appropriate for your viewport size.</p>
+
+        <picture>
+            <source srcset="content/images/image-scale--small.jpg" media="(max-width: 480px)">
+            <source srcset="content/images/image-scale--medium.jpg" media="(max-width: 800px)">
+            <source srcset="content/images/image-scale--rich.jpg">
+            <img src="content/images/image-scale--rich.jpg" alt="Kapiti Coast"> <!-- Fallback in case a browser doesn't support the picture tag -->
+        </picture>
+
+		<h3 name="example-scale-intrinsic-ratios">Iframes scaling using intrinsic ratios</h3>
 
         <p>Some examples of iframes we can scale using an intrinsic ratio:</p>
 
@@ -59,7 +76,7 @@
 </div>
 
 <script>
-var scaleIframes = function() {
+var scaleIframes = function(trigger) {
     // SCALING OF IFRAMES
     // A list of sources we know are compatible with intrinsic ratio scaling.
     // Intrinsic ratios allow us to make an iframe responsive, but it will only
@@ -96,15 +113,16 @@ var scaleIframes = function() {
         let iframeHeight = iframe.clientHeight;
 
         if (scalableRegex.test(iframe.src)) {
-            // If this iframe matches one of our recognised scalable sources
             // Divide height by width to calculate its aspect ratio
             let aspectRatio = iframeHeight / iframeWidth;
 
             // Calculate current aspect ratio of HTML asset to apply padding %
             iframeContainer.style.paddingBottom = (aspectRatio * 100) + '%';
 
-            // Add intrinsic scaling class
-            iframeContainer.classList.add(iframeContainer.classList+'--intrinsic-ratio');
+            // If scaling was triggered on page load, not orientation change
+            if (trigger==='onload') {
+                iframeContainer.classList.add(iframeContainer.classList+'--intrinsic-ratio');
+            }
         } else {
             // If iframe is not recgonised as intrinsically scalable, we will
             // physically scale as if it were an image, using transform scale.
@@ -127,13 +145,21 @@ var scaleIframes = function() {
             targetedHeight = iframeHeight / iframeWidth * targetedWidth;
             iframeContainer.style.height = targetedHeight+'px';
 
-            // Add transform scale class for generic styling
-            iframeContainer.classList.add(iframeContainer.classList+'--transform-scale');
+            // If scaling was triggered on page load, not orientation change
+            if (trigger==='onload') {
+                // Add transform scale class for generic styling
+                iframeContainer.classList.add(iframeContainer.classList+'--transform-scale');
+            }
         }
     }
 }
 
-window.onload = scaleIframes;
+window.addEventListener("orientationchange", function() {
+    scaleIframes('orientation');
+});
+
+window.onload = scaleIframes('onload');
+
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </body>

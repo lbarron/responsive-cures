@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>Responsive Cures</title>
+	<meta name="viewport" content="width=device-width" />
+    <meta name="description" content="Cures for common responsive design problems.  ">
+    <meta name="keywords" content="Responsive Design, HTML, CSS, Mobile, SASS, flex, flexbox, Lewis Barron, Developer, UI, user interface">
+
+    <!-- Normalize styles -->
+    <link rel="stylesheet" type="text/css" href="assets/css/normalize.css" media="all" />
+
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+	<!-- Main styles -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css" media="all" />
+
+    <!-- Favicons: -->
+    <!-- Standard -->
+    <link rel="icon" type="image/x-icon" href="images/favicon/favicon.ico" />
+    <!-- Retina -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/favicon/apple-touch-icon-144x144-precomposed.png">
+    <!-- iPad -->
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/favicon/apple-touch-icon-72x72-precomposed.png">
+    <!-- iPhone -->
+    <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-precomposed.png">
+</head>
+<body>
+<div class="wrapper">
+    <header class="header">
+        <h1>Responsive Cur(s)es</h1>
+        <p>Tackling responsive design, by Lewis Barron.</p>
+    </header>
+    <div class="contents">
+        <h2>CSS Grid Layout</h2>
+
+        <p>This is a basic grid using the CSS Grid Layout:</p>
+
+        <div class="example example-simple-grid">
+            <div>Cell 1</div>
+            <div>Cell 2</div>
+            <div>Cell 3</div>
+            <div>Cell 4</div>
+            <div>Cell 5</div>
+            <div>Cell 6</div>
+            <div>Cell 7</div>
+            <div>Cell 8</div>
+            <div>Cell 9</div>
+        </div>
+
+        <h3>Auto fill versus auto fit</h3>
+
+        <p>In the first example we use the auto-fill keyword for repeat. We get as many tracks with a minimum of 200 pixels and maximum of 1fr as will fit in the container.</p>
+
+        <div class="example example-grid-auto-fill">
+            <div>Cell 1</div>
+            <div>Cell 2</div>
+            <div>Cell 3</div>
+        </div>
+
+        <p>In the second example we use the auto-fit keyword for repeat. We get as many tracks with a minimum of 200 pixels and maximum of 1fr as will fit in the container. After auto-placement any empty tracks are collapsed to 0. So our items can expand to take up the remaining space.</p>
+
+        <div class="example example-grid-auto-fit">
+            <div>Cell 1</div>
+            <div>Cell 2</div>
+            <div>Cell 3</div>
+        </div>
+
+		<p>But what if you need a more complicated grid? Perhaps a grid that resembles the floor plans for a house:</p>
+
+        <div class="example example-house-l1">
+            <div class="example-house-l1__study">
+                <p>Study</p>
+            </div>
+            <div class="example-house-l1__toilet">
+                <p>Toilet</p>
+            </div>
+            <div class="example-house-l1__hallway">
+                <p>Hallway</p>
+            </div>
+            <div class="example-house-l1__garage">
+                <p>Garage</p>
+            </div>
+            <div class="example-house-l1__lounge-kitchen">
+                <p>Lounge / Kitchen</p>
+            </div>
+        </div>
+</body>
+</html>

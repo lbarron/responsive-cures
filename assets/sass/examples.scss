@@ -38,6 +38,80 @@
   div:nth-of-type(3) { background-color: #D8D8D8; }
 }
 
+.example-simple-grid {
+  display: grid;
+  grid-template-columns: 40% 20% 40%;
+  grid-template-rows: 10em 15em 6em;
+  grid-gap: 0.5em;
+
+  div {
+    border: 1px solid #000;
+    padding: 1em;
+    background-color: #0F0DF0;
+    font-size: 150%;
+    color: #FFF;
+  }
+}
+
+.example-grid-auto-fill, .example-grid-auto-fit {
+  display: grid;
+  grid-gap: 10px;
+
+  div {
+    border: 1px solid #000;
+    padding: 1em;
+    background-color: #0F0DF0;
+    font-size: 150%;
+    color: #FFF;
+  }
+}
+
+.example-grid-auto-fill { grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); }
+.example-grid-auto-fit { grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); }
+
+.example-house-l1 {
+  display: grid;
+  height: 1024px;
+  border: 5px solid #D8D8D8;
+  grid-gap: 2px;
+  grid-template-columns: 40% 20% 40%;
+  grid-template-rows: row1-start / row2-end;
+  grid-template-columns: [col1-start] 40% [col2-start] 20% [col3-start] 40% [col3-end];
+  grid-template-rows: [row1-start] 25% [row2-start] 25% [row3-start] 25% [row4-start] 25% [row4-end];
+
+  div {
+    border: 1px solid #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__study {
+    grid-column: col1-start;
+    grid-row: row1-start;
+  }
+
+  &__hallway {
+    grid-column: col2-start;
+    grid-row: row1-start / row3-start;
+  }
+
+  &__garage {
+    grid-column: col3-start;
+    grid-row: row1-start / row3-start;
+  }
+
+  &__toilet {
+    grid-column: col1-start;
+    grid-row: row2-start;
+  }
+
+  &__lounge-kitchen {
+    grid-column: col1-start / col3-end;
+    grid-row: row3-start / row4-end;
+  }
+}
+
 .scale-iframe { margin-bottom: 30px; }
 
 .scale-iframe--intrinsic-ratio {
