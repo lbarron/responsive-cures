@@ -74,16 +74,11 @@
   height: 1024px;
   border: 5px solid #D8D8D8;
   grid-gap: 2px;
-  grid-template-columns: 40% 20% 40%;
-  grid-template-rows: row1-start / row2-end;
   grid-template-columns: [col1-start] 40% [col2-start] 20% [col3-start] 40% [col3-end];
   grid-template-rows: [row1-start] 25% [row2-start] 25% [row3-start] 25% [row4-start] 25% [row4-end];
 
   div {
     border: 1px solid #000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 
   &__study {
@@ -107,8 +102,28 @@
   }
 
   &__lounge-kitchen {
+    display: grid;
     grid-column: col1-start / col3-end;
     grid-row: row3-start / row4-end;
+    grid-template-columns: [sub-col1-start] 25% [sub-col2-start] 25% [sub-col3-start] 25% [sub-col4-start] 25% [sub-col4-end];
+    grid-template-rows: [sub-row1-start] 25% [sub-row2-start] 25% [sub-row3-start] 25% [sub-row4-start] 25% [sub-row4-end];
+  }
+
+  &__item {
+    border: none;
+    text-indent: -9999px;
+  }
+
+  &__item--stairs {
+    grid-column: sub-col4-start / sub-col4-end;
+    grid-row: sub-row1-start  / sub-row1-start;
+    background: repeating-linear-gradient(
+      to right,
+      #000,
+      #000 10px,
+      #fff 10px,
+      #fff 20px
+    );
   }
 }
 
